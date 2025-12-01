@@ -1,11 +1,43 @@
-[![Obsolete project](https://jb.gg/badges/obsolete-plastic.svg)](https://github.com/JetBrains#jetbrains-on-github)
-[![License](https://img.shields.io/badge/License-Apache_2.0-blue.svg)](https://opensource.org/licenses/Apache-2.0)
-# [Compose Multiplatform](https://github.com/JetBrains/compose-multiplatform) application
+Внутри — `.exe` + `runtime/` и ресурсы. Запуск без установки (portable).
 
-This template has been archived.
+Приложение Desktop (Kotlin + Compose packaging) использует OpenGL (LWJGL + GLFW) для визуализации каркасной 3D‑модели буквы «К», выполнения 3D‑преобразований и построения ортографических проекций.
 
-* To create Compose Multiplatform projects, use the [Kotlin Multiplatform wizard](https://kmp.jetbrains.com/).
-  Make sure to enable the **Share UI** option.
-* To learn how to build Compose Multiplatform projects, see the [Get started with Compose Multiplatform](https://www.jetbrains.com/help/kotlin-multiplatform-dev/compose-multiplatform-getting-started.html) tutorial.
+## Технологии
+- Kotlin Multiplatform + Compose (используется для упаковки desktop)
+- LWJGL 3 (OpenGL 2.1 совместимый профиль, GLFW)
 
-  If you have an idea on how to improve the tutorial, create a pull request to the [documentation repository](https://github.com/JetBrains/kotlin-multiplatform-dev-docs).
+## Примечание
+Рендер выполнен в совместимом профиле (fixed‑function pipeline) для упрощения лабораторной работы.
+
+## Функциональность
+- **Каркасная 3D‑модель буквы «К** (набор рёбер).
+- **Оси координат** (X — красная, Y — зелёная, Z — синяя).
+- **Преобразования**: масштабирование, перенос, вращение вокруг произвольной оси (X/Y/Z).
+- **Ортографические проекции**: Oxy, Oxz, Oyz.
+- **Вывод итоговой матрицы 4×4** преобразования в заголовке окна.
+
+## Управление
+- **1** — проекция Oxy
+- **2** — проекция Oxz
+- **3** — проекция Oyz
+- **Стрелки** — перенос по X/Y
+- **+ / -** — масштабирование
+- **X** — вращение вокруг оси X (по 5°)
+- **C** — вращение вокруг оси Y (по 5°)
+- **Z** — вращение вокруг оси Z (по 5°)
+- **Esc** — выход
+
+## Запуск из IDE
+Запустите desktop-конфигурацию (main class: `MainKt`). Откроется окно GLFW/OpenGL.
+
+## Сборка Portable .exe
+В PowerShell из корня проекта:
+
+```
+cd desktopApp
+..\gradlew.bat createDistributable
+```
+
+Результат: `desktopApp/build/compose/binaries/main/app/<имя_папки_приложения>/`
+
+Внутри — `.exe` + `runtime/` и ресурсы. Запускается без установки (portable).

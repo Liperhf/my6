@@ -12,6 +12,16 @@ kotlin {
             dependencies {
                 implementation(compose.desktop.currentOs)
                 implementation(project(":shared"))
+
+                // LWJGL core + OpenGL + GLFW
+                val lwjglVersion = "3.3.3"
+                implementation("org.lwjgl:lwjgl:$lwjglVersion")
+                implementation("org.lwjgl:lwjgl-opengl:$lwjglVersion")
+                implementation("org.lwjgl:lwjgl-glfw:$lwjglVersion")
+
+                runtimeOnly("org.lwjgl:lwjgl:$lwjglVersion:natives-windows")
+                runtimeOnly("org.lwjgl:lwjgl-opengl:$lwjglVersion:natives-windows")
+                runtimeOnly("org.lwjgl:lwjgl-glfw:$lwjglVersion:natives-windows")
             }
         }
     }
