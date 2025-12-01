@@ -1,13 +1,8 @@
-Внутри — `.exe` + `runtime/` и ресурсы. Запуск без установки (portable).
-
 Приложение Desktop (Kotlin + Compose packaging) использует OpenGL (LWJGL + GLFW) для визуализации каркасной 3D‑модели буквы «К», выполнения 3D‑преобразований и построения ортографических проекций.
 
 ## Технологии
-- Kotlin Multiplatform + Compose (используется для упаковки desktop)
+- Kotlin Multiplatform + Compose 
 - LWJGL 3 (OpenGL 2.1 совместимый профиль, GLFW)
-
-## Примечание
-Рендер выполнен в совместимом профиле (fixed‑function pipeline) для упрощения лабораторной работы.
 
 ## Функциональность
 - **Каркасная 3D‑модель буквы «К** (набор рёбер).
@@ -26,18 +21,3 @@
 - **C** — вращение вокруг оси Y (по 5°)
 - **Z** — вращение вокруг оси Z (по 5°)
 - **Esc** — выход
-
-## Запуск из IDE
-Запустите desktop-конфигурацию (main class: `MainKt`). Откроется окно GLFW/OpenGL.
-
-## Сборка Portable .exe
-В PowerShell из корня проекта:
-
-```
-cd desktopApp
-..\gradlew.bat createDistributable
-```
-
-Результат: `desktopApp/build/compose/binaries/main/app/<имя_папки_приложения>/`
-
-Внутри — `.exe` + `runtime/` и ресурсы. Запускается без установки (portable).
